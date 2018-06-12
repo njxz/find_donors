@@ -12100,7 +12100,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：总的记录数</span>
@@ -12113,7 +12113,9 @@ div#notebook {
 <span class="n">n_at_most_50k</span> <span class="o">=</span>  <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">][</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;&lt;=50K&quot;</span><span class="p">])</span>
 
 <span class="c1"># TODO：被调查者收入大于$50,000所占的比例</span>
-<span class="n">greater_percent</span> <span class="o">=</span> <span class="n">n_greater_50k</span><span class="o">/</span><span class="n">n_records</span><span class="o">*</span><span class="mi">100</span>
+<span class="k">print</span> <span class="n">n_greater_50k</span><span class="p">,</span><span class="n">n_records</span>
+
+<span class="n">greater_percent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_greater_50k</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
 
 <span class="c1"># 打印结果</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Total number of records: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_records</span><span class="p">))</span>
@@ -12136,10 +12138,11 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total number of records: 45222
+<pre>11208 45222
+Total number of records: 45222
 Individuals making more than $50,000: 11208
 Individuals making at most $50,000: 34014
-Percentage of individuals making more than $50,000: 0.00%
+Percentage of individuals making more than $50,000: 24.78%
 </pre>
 </div>
 </div>
@@ -13296,13 +13299,11 @@ Final F-score on the validation data: 0.7177
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答：</strong></p>
 <ul>
-<li><p>特征1:年龄，年龄愈大，经济上面越宽裕，越有可能变成捐献者之一</p>
-</li>
-<li><p>特征2:education_num,受教育时间越长，对于公益事业的了解会更多，会有更大的几率成为捐献者。</p>
-</li>
-<li>特征3:education_level，教育程度越高，同上</li>
-<li>特征4:marital-status，婚后，更有责任感。并且能够结婚也说明了具备一定的经济基础。有捐献的可能</li>
-<li>特征5:capital-gain，收益愈高，就越有能力参与到捐献的公益事业之中</li>
+<li>特征1:年龄，年龄愈大，经济上面越宽裕，越有可能变成捐献者之一</li>
+<li>特征2:education_num,成为捐献者的人中，大部分的education_num都较高。</li>
+<li>特征3:education_level，同上，education_num越高，则education_level的值在列表中的序号越大，但对比education_num，这只是对其做了分类，没有特征2的连续值那么清晰，因此在特征2之后。</li>
+<li>特征4:marital-status，捐献者中，有很大的一部分人都是已婚的，因此判定其是一个重要的特征。但是因为看上去占比不是很高，因此为第四个特征。</li>
+<li>特征5:capital-gain，捐献者中，大部分人有着不错的收入，但是有着不错收入的人不一定是捐献者，因此将其作为第五个特征。</li>
 </ul>
 
 </div>
